@@ -1,0 +1,48 @@
+{
+  "name": "express-di",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "cross-env nodemon",
+    "start:dev": "cross-env NODE_ENV=dev nodemon",
+    "format": "npm run prettier && npm run lint",
+    "format:check": "npm run prettier:check && npm run lint:check",
+    "prettier": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "prettier:check": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\" || exit 1",
+    "lint": "eslint \"src/**/*.{ts,js}\" \"test/**/*.{ts,js}\" --fix",
+    "lint:check": "eslint \"src/**/*.{ts,js}\" \"test/**/*.{ts,js}\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "compression": "^1.8.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "hpp": "^0.2.3",
+    "mongoose": "^8.10.1",
+    "mongoose-paginate-v2": "^1.9.0",
+    "reflect-metadata": "^0.2.2",
+    "typedi": "^0.10.0"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.7.5",
+    "@types/cookie-parser": "^1.4.8",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/helmet": "^0.0.48",
+    "@types/hpp": "^0.2.6",
+    "@types/mongoose": "^5.11.96",
+    "@types/mongoose-paginate-v2": "^1.6.4",
+    "@types/node": "^22.13.4",
+    "nodemon": "^3.1.9",
+    "prettier": "^3.5.1",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "tslib": "^2.8.1",
+    "typescript": "^5.7.3"
+  }
+}
