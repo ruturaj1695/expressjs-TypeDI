@@ -2,6 +2,7 @@ import { Service } from "typedi";
 import { UserService } from "./user.service";
 import { Request, Response, NextFunction } from "express";
 import { IUser } from "./interfaces/user.interface";
+import { APIError } from "@src/utils/api.error";
 
 @Service()
 export class UsersController {
@@ -34,6 +35,11 @@ export class UsersController {
       const user: IUser | null | undefined = await this.userService.getUser({
         email,
       });
+
+      if (!user) {
+        throw new APIError("User not found", 404);
+      }
+
       res.status(200).json(user);
     } catch (error) {
       next(error);
