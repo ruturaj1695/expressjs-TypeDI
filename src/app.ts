@@ -33,7 +33,7 @@ export class App {
     this.app.use(
       (err: any, req: Request, res: Response, next: NextFunction) => {
         Container.get(ErrorMiddleware).error(err, req, res, next);
-      }
+      },
     );
   }
 

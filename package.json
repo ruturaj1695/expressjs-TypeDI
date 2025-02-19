@@ -9,7 +9,10 @@
     "prettier": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "prettier:check": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\" || exit 1",
     "lint": "eslint \"src/**/*.{ts,js}\" \"test/**/*.{ts,js}\" --fix",
-    "lint:check": "eslint \"src/**/*.{ts,js}\" \"test/**/*.{ts,js}\""
+    "lint:check": "eslint \"src/**/*.{ts,js}\" \"test/**/*.{ts,js}\"",
+    "build": "tsc && npm run format",
+    "build:ci": "tsc && npm run format:check",
+    "devBuild": "tsc"
   },
   "keywords": [],
   "author": "",

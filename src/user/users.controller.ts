@@ -15,14 +15,14 @@ export class UsersController {
   async getAllUsers(
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
   ): Promise<void> {
     try {
-      const { page, size } = req.query;
+      const { page = 1, size = 10 } = req.query;
       const users: IUser[] = await this.userService.getAllUsers(
         {},
         +page,
-        +size
+        +size,
       );
       res.status(200).json(users);
     } catch (error) {
@@ -33,7 +33,7 @@ export class UsersController {
   async getUser(
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
   ): Promise<void> {
     try {
       const { email } = req.query;
@@ -54,7 +54,7 @@ export class UsersController {
   async createUser(
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
   ): Promise<void> {
     try {
       const userData: IUser = req.body;
