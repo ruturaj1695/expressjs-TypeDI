@@ -15,7 +15,7 @@ export class UsersController {
   async getAllUsers(
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
   ): Promise<void> {
     try {
       const users: IUser[] = await this.userService.getAllUsers({});
@@ -28,7 +28,7 @@ export class UsersController {
   async getUser(
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
   ): Promise<void> {
     try {
       const { email } = req.query;
@@ -49,7 +49,7 @@ export class UsersController {
   async createUser(
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
   ): Promise<void> {
     try {
       const userData: IUser = req.body;

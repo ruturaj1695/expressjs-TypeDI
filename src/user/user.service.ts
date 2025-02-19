@@ -14,7 +14,7 @@ export class UserService {
 
   constructor(
     @Inject(DatabaseConstants.USER_DB_MONGOOSE_MODEL)
-    userModel: PaginateModel<IUser>
+    userModel: PaginateModel<IUser>,
   ) {
     this.userModel = userModel;
   }
@@ -22,7 +22,7 @@ export class UserService {
   public async getAllUsers(
     filterQuery: FilterQuery<IUser>,
     page?: number,
-    size?: number
+    size?: number,
   ): Promise<IUser[]> {
     try {
       const paginateOptions: PaginateOptions = {
@@ -35,7 +35,7 @@ export class UserService {
       };
       const users: PaginateResult<IUser> = await this.userModel.paginate(
         filterQuery,
-        paginateOptions
+        paginateOptions,
       );
       return users.docs || [];
     } catch (error) {
@@ -44,7 +44,7 @@ export class UserService {
   }
 
   public async getUser(
-    filterQuery: FilterQuery<IUser>
+    filterQuery: FilterQuery<IUser>,
   ): Promise<IUser | null | undefined> {
     try {
       const user: IUser | null = await this.userModel.findOne(
@@ -52,7 +52,7 @@ export class UserService {
         null,
         {
           lean: true,
-        }
+        },
       );
       return user;
     } catch (error) {
@@ -69,7 +69,7 @@ export class UserService {
         {
           upsert: true,
           new: true,
-        }
+        },
       );
       return user;
     } catch (error) {

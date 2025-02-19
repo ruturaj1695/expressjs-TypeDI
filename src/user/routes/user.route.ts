@@ -16,15 +16,15 @@ export class UserRoute {
   private initializeRoutes() {
     this.router.get(
       "/users",
-      this.usersController.getAllUsers.bind(this.usersController)
+      this.usersController.getAllUsers.bind(this.usersController),
     );
     this.router.get(
       "/user",
-      this.usersController.getUser.bind(this.usersController)
+      this.usersController.getUser.bind(this.usersController),
     );
     this.router.post(
       "/users",
-      this.usersController.createUser.bind(this.usersController)
+      this.usersController.createUser.bind(this.usersController),
     );
   }
 }
