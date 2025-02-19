@@ -2,7 +2,7 @@ import { Service } from "typedi";
 import { UserService } from "./user.service";
 import { Request, Response, NextFunction } from "express";
 import { IUser } from "./interfaces/user.interface";
-import { APIError } from "@src/utils/api.error";
+import { APIError } from "../utils/api.error";
 
 @Service()
 export class UsersController {
