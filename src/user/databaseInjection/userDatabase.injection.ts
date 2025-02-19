@@ -6,7 +6,7 @@ import { DatabaseConstants } from "../../common/constants/database.constants";
 
 export async function userDatabaseInjection() {
   mongoose.set("debug", true);
-  const databaseURL: string = `mongodb://127.0.0.1:27017/expressjs-DI`;
+  const databaseURL: string = `${process.env.DB_URL}/${process.env.DB_NAME}`;
   const userDBConnection: Connection = await mongoose
     .createConnection(databaseURL, {
       maxPoolSize: 10,

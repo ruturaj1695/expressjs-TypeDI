@@ -16,7 +16,7 @@ export class App {
 
   constructor(userRoute: UserRoute) {
     this.app = express();
-    this.port = 3000;
+    this.port = Number(process.env.PORT) || 3000;
     this.routes = [userRoute.router];
     this.initializeMiddlewares();
     this.initializeRoute();
@@ -33,7 +33,7 @@ export class App {
     this.app.use(
       (err: any, req: Request, res: Response, next: NextFunction) => {
         Container.get(ErrorMiddleware).error(err, req, res, next);
-      },
+      }
     );
   }
 
