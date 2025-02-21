@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import Container, { Service } from "typedi";
 import { ErrorMiddleware } from "./middlewares/error.middleware";
+import expressRateLimit from "express-rate-limit";
 
 @Service()
 export class App {
@@ -38,6 +39,19 @@ export class App {
   }
 
   private initializeMiddlewares() {
+    const rateLimit = expressRateLimit({
+      /* 15 mins */
+      windowMs: 15 * 60 * 1000,
+      /* Limit each IP to 100 requests per windowMs */
+      limit: 100,
+      /* Error message will display with 429 status code */
+      message: "Too many requests, please try again later!",
+      /* Sends headers with rate limit */
+      standardHeaders: false,
+      /* Disable X-RateLimit-* headers */
+      legacyHeaders: false,
+    });
+
     this.app.use(cors({ origin: "*", credentials: true }));
     this.app.use(hpp());
     this.app.use(helmet());
@@ -45,6 +59,7 @@ export class App {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(cookieParser());
+    this.app.use(rateLimit);
   }
 
   public listen() {
