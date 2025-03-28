@@ -1,3 +1,5 @@
+![Profile view counter on GitHub](https://komarev.com/ghpvc/?username=ruturaj1695)
+
 # Express Dependency Injection Project
 
 This project demonstrates the use of dependency injection in an Express.js application using the `typedi` library.
